@@ -1,55 +1,76 @@
 console.log("grades.js is connected");
 
 const scores = [82, 71, 62, 95, 55, 98, 69, 72, 78, 84, 64, 58, 87, 60]
-const grades = {} // You'll need to change this line of code
-
-var gradeA = 0;
-var gradeB = 0;
-var gradeC = 0;
-var gradeD = 0;
-var gradeF = 0;
+var grades = {
+    A: 0,
+    B: 0,
+    C: 0,
+    D: 0,
+    F: 0
+}
 
 
 for (let i = 0; i < scores.length; i++) {
     if(scores[i] >= 91){
-        gradeA += 1;
+        grades.A += 1;
     }else if(scores[i] <= 90 && scores[i] >= 81){
-        gradeB += 1;
+        grades.B += 1;
     }else if(scores[i] <= 80 && scores[i] >= 71){
-        gradeC += 1;
+        grades.C += 1;
     }else if(scores[i] <= 70 && scores[i] >= 61){
-        gradeD += 1;
-    }else if(scores[i] <= 60){
-        gradeF += 1;
+        grades.D += 1;
+    }else if(scores[i] <= 60 && scores[i] >= 0){
+        grades.F += 1;
     };
 }
 console.log("Grade Totals")
-console.log("Total As: ", gradeA);
-console.log("Total Bs: ", gradeB); 
-console.log("Total Cs: ", gradeC);
-console.log("Total Ds: ", gradeD);
-console.log("Total Fs: ", gradeF);
+console.log("Total As: ", grades.A);
+console.log("Total Bs: ", grades.B); 
+console.log("Total Cs: ", grades.C);
+console.log("Total Ds: ", grades.D);
+console.log("Total Fs: ", grades.F);
 
 console.log("Total Grades", scores.length)
 
-scores.sort();
+scores.sort(function(a,b){
+    return a-b});
+
 console.log(`The lowest grade is ${scores[0]}.`);
 console.log(`The highest grade is ${scores[13]}.`);
 
 
-var currentGradeCount = 0;
-for(i=0; i<=scores.length, i++){
-    if(scores[i]===  ){
-        return true;
-    }else(score[i] !== ){
-        return false;
-    }if true ++1 currentGradeCount;
-};
+//most common grade
+var mostFreq = 0;
 
-// Use console.log() to output the following criteria to the browser console.
+var currentGradeCountHigh = 0;
 
-// COMPLETE - How many of each grade? Accomplish this with a for..in loop.
-// COMPLETE What is the lowest score? Sort the array and find out.
-// COMPLETE What is the highest score?
-// Which grade had the most students achieve it? Use an if statment, and a currentGradeCount variable, in your for..in loop to see if the current grade's value is higher than the last one.
-// Which grade had the fewest students achieve it?
+for (x in grades){
+    if (mostFreq <= grades[x]) {
+        mostFreq = grades[x];
+    }
+}
+
+// if there is more than one most common grade
+for (x in grades) {
+    if (mostFreq === grades[x]) {
+        console.log("Most Common Grade: ", x);
+    }
+}
+
+// find the least common grade 
+
+var leastFreq = scores.length;
+
+for (x in grades){
+    if (leastFreq >= grades[x]) {
+        leastFreq = grades[x];
+    }
+}
+
+// if there is more than one least common grade
+for (x in grades){
+    if(leastFreq === grades[x]) {
+        console.log("Least Common Grade: ", x);
+    }
+}
+
