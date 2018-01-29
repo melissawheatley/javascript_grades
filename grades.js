@@ -23,7 +23,7 @@ for (let i = 0; i < scores.length; i++) {
         gradeF += 1;
     };
 }
-console.log("Grade Totals Below")
+console.log("Grade Totals")
 console.log("Total As: ", gradeA);
 console.log("Total Bs: ", gradeB); 
 console.log("Total Cs: ", gradeC);
@@ -36,10 +36,20 @@ scores.sort();
 console.log(`The lowest grade is ${scores[0]}.`);
 console.log(`The highest grade is ${scores[13]}.`);
 
+
+var currentGradeCount = 0;
+for(i=0; i<=scores.length, i++){
+    if(scores[i]===  ){
+        return true;
+    }else(score[i] !== ){
+        return false;
+    }if true ++1 currentGradeCount;
+};
+
 // Use console.log() to output the following criteria to the browser console.
 
-// How many of each grade? Accomplish this with a for..in loop.
-// What is the lowest score? Sort the array and find out.
-// What is the highest score?
+// COMPLETE - How many of each grade? Accomplish this with a for..in loop.
+// COMPLETE What is the lowest score? Sort the array and find out.
+// COMPLETE What is the highest score?
 // Which grade had the most students achieve it? Use an if statment, and a currentGradeCount variable, in your for..in loop to see if the current grade's value is higher than the last one.
 // Which grade had the fewest students achieve it?
