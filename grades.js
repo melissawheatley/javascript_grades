@@ -1,6 +1,6 @@
 console.log("grades.js is connected");
 
-const scores = [82, 71, 62, 95, 55, 98, 69, 72, 78, 84, 64, 58, 87, 60]
+const scores = [82, 71, 62, 101, 95, 55, 98, 69, 72, 78, 84, 64, 58, 87, 60]
 var grades = {
     A: 0,
     B: 0,
@@ -9,9 +9,10 @@ var grades = {
     F: 0
 }
 
+console.log(scores);
 
 for (let i = 0; i < scores.length; i++) {
-    if(scores[i] >= 91){
+    if(scores[i] >= 91 && scores[i] <=100){
         grades.A += 1;
     }else if(scores[i] <= 90 && scores[i] >= 81){
         grades.B += 1;
@@ -19,9 +20,12 @@ for (let i = 0; i < scores.length; i++) {
         grades.C += 1;
     }else if(scores[i] <= 70 && scores[i] >= 61){
         grades.D += 1;
-    }else if(scores[i] <= 60 && scores[i] >= 0){
+    }else if (scores[i] <=60 && scores[i] >= 0){
         grades.F += 1;
-    };
+    }else{
+        console.log("this is not a grade");
+    }
+    ;
 }
 console.log("Grade Totals")
 console.log("Total As: ", grades.A);
@@ -36,41 +40,32 @@ scores.sort(function(a,b){
     return a-b});
 
 console.log(`The lowest grade is ${scores[0]}.`);
-console.log(`The highest grade is ${scores[13]}.`);
+console.log(`The highest grade is ${scores[scores.length-1]}.`);
 
 
 //most common grade
-var mostFreq = 0;
 
-var currentGradeCountHigh = 0;
-
-for (x in grades){
-    if (mostFreq <= grades[x]) {
-        mostFreq = grades[x];
-    }
-}
-
-// if there is more than one most common grade
-for (x in grades) {
-    if (mostFreq === grades[x]) {
-        console.log("Most Common Grade: ", x);
-    }
-}
-
-// find the least common grade 
-
-var leastFreq = scores.length;
+let currentGradeCount = 0;
+var gradeCountHigh; 
+var newGradeCount = 100;
+var gradeCountLow;
 
 for (x in grades){
-    if (leastFreq >= grades[x]) {
-        leastFreq = grades[x];
+    if(grades[x] > currentGradeCount){
+        gradeCountHigh = [x];
+        currentGradeCount = grades[x]
+    }else if(grades[x] === currentGradeCount){
+        gradeCountHigh.push(x);
     }
-}
+    if(grades[x] < newGradeCount){
+        gradeCountLow = [x];
+        newGradeCount = grades[x]
+    }else if(grades[x] === newGradeCount){
+        gradeCountLow.push(x);
+    }
+};
 
-// if there is more than one least common grade
-for (x in grades){
-    if(leastFreq === grades[x]) {
-        console.log("Least Common Grade: ", x);
-    }
-}
+console.log("Most frequent grade", gradeCountHigh);
+console.log("Least Frequent Grade: ", gradeCountLow);
+
 
